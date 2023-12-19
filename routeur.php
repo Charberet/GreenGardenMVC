@@ -1,7 +1,8 @@
 <?php
 
+require_once 'model/bdd_model.php';
 require_once 'controller/produits_controller.php';
-require_once 'vues/vues.php';
+require_once 'vues/vue.php';
 
 class routeur
 {
@@ -18,14 +19,10 @@ class routeur
     {
 
         try {
-            if (isset($_POST['TrierCat'])) {
-                if ($_GET['TrierCat'] == "") {
-                    if (isset($_GET['id'])) {
+            
 
-                        $this->ctrlProduits->affichageProduits($_POST['TrierCat']);
-                    }
-                }
-            }
+                        $this->ctrlProduits->affichageProduits();
+                
         } catch (Exception $e) {
             $this->erreur($e->getMessage());
         }
