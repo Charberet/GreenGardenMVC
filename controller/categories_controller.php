@@ -1,5 +1,4 @@
 <?php
-
 require_once 'model/produits_model.php';
 require_once 'model/categories_model.php';
 require_once 'vues/vue.php';
@@ -15,10 +14,29 @@ class ControleurCategories
     {
         $this->categorie = new Categorie();
     }
-    public function affichageProduits()
+
+
+    public function addCat()
     {
-        $categorie = $this->categorie->addCategory();
-        $vue = new vue("addcategorie");
-        $vue->generer(array('categorie' => $categorie));
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['addProduct'])) {
+
+                $addLibelle = $_POST['addLibelle'];
+                $AddCatParent = $_POST['AddCatParent'];
+
+                $result = $this->categorie->getCategory(['ref' => $addLibelle]);
+
+                if ($result > 0) {
+                } else {
+                    $this->categorie->addCategory($addLibelle, $AddCatParent);
+                }
+                // 
+
+            }
+        }
+        $categories = $this->categorie->getCategory();
+        $vue = new vue("addcategories");
+        $vue->generer(array('category' => $categories));
     }
 }

@@ -9,10 +9,12 @@ class routeur
 {
 
     private $ctrlProduits;
+    private $ctrlCategorie;
 
     public function __construct()
     {
         $this->ctrlProduits = new ControleurProduits();
+        $this->ctrlCategorie = new ControleurCategories();
     }
 
     // Traite une requête entrante
@@ -21,6 +23,9 @@ class routeur
 switch(isset($_GET['action'])){
     case "addproduct":
         $this->ctrlProduits->addProduit();
+        break;
+    case "addcategories":
+        $this->ctrlCategorie->addCat();
         break;
         default:
             $this->ctrlProduits->affichageProduits();
