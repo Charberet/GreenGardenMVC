@@ -1,0 +1,43 @@
+html{
+
+height: 100%;
+
+}
+
+body {
+    background-image: url("../images/pexels-sohail-nachiti-807598.jpg")!important;
+    background-size: cover !important;
+    height: 100%;
+}
+
+.card {
+
+background-color: rgba(161, 161, 161, 0.562);
+
+}
+
+
+main> .container{
+
+
+    padding-top: 60px;
+}
+
+.footerParent{
+
+position:relative;
+margin-top: 50px;
+
+}
+
+footer {
+    position: absolute !important;
+    height: 50px !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+}
+
+
+
