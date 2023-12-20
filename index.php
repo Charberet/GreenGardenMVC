@@ -1,7 +1,7 @@
 <?php
 require_once 'routeur.php';
 
-$route = new Routeur();
+$route = new routeur();
 
 $route->routerRequete();
 

@@ -1,7 +1,7 @@
 <?php
 
-require_once 'model/bdd_model.php';
 require_once 'controller/produits_controller.php';
+// require_once 'controller/categories_controller.php';
 require_once 'vues/vue.php';
 
 class routeur
@@ -19,10 +19,7 @@ class routeur
     {
 
         try {
-            
-
-                        $this->ctrlProduits->affichageProduits();
-                
+            $this->ctrlProduits->affichageProduits();
         } catch (Exception $e) {
             $this->erreur($e->getMessage());
         }

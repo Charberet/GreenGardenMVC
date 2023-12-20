@@ -2,7 +2,6 @@
 
 abstract class connectBDD
 {
-
     private $bdd;
 
     private function getBdd(): PDO
@@ -12,14 +11,23 @@ abstract class connectBDD
         }
         return $this->bdd;
     }
-    protected function execute($sql, $params = null): bool|PDOStatement
+    protected function executeRequete($sql, $params = null)
     {
         if ($params == null) {
             $resultat = $this->getBdd()->query($sql); // exécution directe
+        
         } else {
             $resultat = $this->getBdd()->prepare($sql); // requête préparée
             $resultat->execute($params);
         }
-        return $resultat;
+        return $resultat->fetchAll();
+    }
+    protected function executeRequeteFetchAll($sql)
+    {
+
+            $resultat = $this->getBdd()->prepare($sql); // requête préparée
+            $resultat->execute();
+        
+        return $resultat->fetchAll();
     }
 }
