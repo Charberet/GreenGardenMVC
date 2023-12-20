@@ -1,8 +1,9 @@
 <?php
 
 require_once 'controller/produits_controller.php';
-// require_once 'controller/categories_controller.php';
+require_once 'controller/categories_controller.php';
 require_once 'vues/vue.php';
+
 
 class routeur
 {
@@ -17,12 +18,15 @@ class routeur
     // Traite une requête entrante
     public function routerRequete()
     {
-
-        try {
+switch(isset($_GET['action'])){
+    case "addproduct":
+        $this->ctrlProduits->addProduit();
+        break;
+        default:
             $this->ctrlProduits->affichageProduits();
-        } catch (Exception $e) {
-            $this->erreur($e->getMessage());
-        }
+            break;
+}
+
     }
     // Affiche une erreur
     private function erreur($msgErreur)

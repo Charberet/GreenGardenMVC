@@ -22,12 +22,12 @@ abstract class connectBDD
         }
         return $resultat->fetchAll();
     }
-    protected function executeRequeteFetchAll($sql)
+    protected function executeRequeteFetch($sql, $param)
     {
 
             $resultat = $this->getBdd()->prepare($sql); // requête préparée
-            $resultat->execute();
+            $resultat->execute($param);
         
-        return $resultat->fetchAll();
+        return $resultat->fetch();
     }
 }

@@ -1,24 +1,24 @@
-<?php 
+<?php
 
 require_once 'model/produits_model.php';
 require_once 'model/categories_model.php';
-require_once 'vues/produits_vue.php';
+require_once 'vues/vue.php';
 
 $cat = new Categorie();
 
-class ControleurCategories{
+class ControleurCategories
+{
 
     private $categorie;
 
     public function __construct()
     {
         $this->categorie = new Categorie();
-    
+    }
+    public function affichageProduits()
+    {
+        $categorie = $this->categorie->addCategory();
+        $vue = new vue("addcategorie");
+        $vue->generer(array('categorie' => $categorie));
     }
 }
-    $categorie = $this->categorie->getCategory();
-    $vue= new vue("categorie");
-    $vue->generer(array('categorie' => $categorie));
-
-
-?>

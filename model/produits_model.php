@@ -16,12 +16,12 @@ class Produit extends connectBDD
         return $this->executeRequete($sql);
     }
 
-    function addProduct()
+    function addProduct($addTaux_TVA,$addNom_Long,$addNom_court,$addRef_fournisseur,$addPhoto,$addPrix_Achat,$fournisseur,$categorie)
     {
 
         $sql = "INSERT INTO t_d_produit (`Taux_TVA`,`Nom_Long`,`Nom_court`,`Ref_fournisseur`,`Photo`,`Prix_Achat`,`Id_Fournisseur`,`Id_Categorie`) VALUES (?,?,?,?,?,?,?,?)";
 
-        return $this->executeRequete($sql, array($_POST['addTaux_TVA'], $_POST['addNom_Long'], $_POST['addNom_court'], $_POST['addRef_fournisseur'], $_POST['addPhoto'], $_POST['addPrix_Achat'], $_POST['fournisseur'], $_POST['categorie']));
+        return $this->executeRequete($sql, array($addTaux_TVA,$addNom_Long,$addNom_court,$addRef_fournisseur,$addPhoto,$addPrix_Achat,$fournisseur,$categorie));
     }
     function deleteProdcut($produit)
     {
@@ -29,5 +29,15 @@ class Produit extends connectBDD
         $sql = "DELETE FROM t_d_produit WHERE Id_Produit = $produit";
         return $this->executeRequete($sql);
     }
+
+    function getRef($param = []){
+
+        $sql="SELECT * FROM t_d_produit where Ref_fournisseur = :ref";
+
+        return $this->executeRequeteFetch($sql,$param);
+    }
+
+
+
 }
 ?>

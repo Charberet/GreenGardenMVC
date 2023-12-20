@@ -1,5 +1,4 @@
 
-
 <form method="">
     <select onchange="submit()" name="TrierCat" class="form-select form-select-lg mb-3 selectpicker">
         <option value="all">Selectionnez une catégorie...</option>
@@ -9,7 +8,7 @@
 
                 <?php foreach ($category as $valuesChild) { ?>
                     <?php if ($valuesChild['Id_Categorie_Parent'] != "" && $valuesChild['Id_Categorie_Parent'] == $valuesParent['Id_Categorie']) { ?>
-                        <option value="<?= "index.php?action=category&id=".$valuesChild['Id_Categorie']?>" <?php echo ($category == $valuesChild['Id_Categorie']) ? 'selected' : ''; ?> <?php print $valuesChild['Libelle']; ?></option>
+                        <option value="<?= "index.php?action=category&id=".$valuesChild['Id_Categorie']?>"  > <?php print $valuesChild['Libelle'] ?> </option>
           
             <?php }
                 }
@@ -17,9 +16,6 @@
                 </optgroup>
     </select>
 </form>
-        
-
-
 <div class=" d-flex flex-wrap">
     <?php foreach ($products as $product) { ?>
         <div class="card m-3" id="<?php echo $product['Id_Produit'] ?>" style="width: 18rem;">
