@@ -1,7 +1,12 @@
 <?php
 
 require_once 'controller/produits_controller.php';
+<<<<<<< Updated upstream
 require_once 'vues/vues.php';
+=======
+// require_once 'controller/categories_controller.php';
+require_once 'vues/vue.php';
+>>>>>>> Stashed changes
 
 class routeur
 {
@@ -18,6 +23,7 @@ class routeur
     {
 
         try {
+<<<<<<< Updated upstream
             if (isset($_POST['TrierCat'])) {
                 if ($_GET['TrierCat'] == "") {
                     if (isset($_GET['id'])) {
@@ -26,6 +32,9 @@ class routeur
                     }
                 }
             }
+=======
+            $this->ctrlProduits->affichageProduits();
+>>>>>>> Stashed changes
         } catch (Exception $e) {
             $this->erreur($e->getMessage());
         }
