@@ -4,14 +4,8 @@ require_once 'model/produits_model.php';
 require_once 'model/categories_model.php';
 require_once 'vues/vue.php';
 
-<<<<<<< Updated upstream
-$produit = new Produit();
-
-class ControleurProduits{
-=======
 class ControleurProduits
 {
->>>>>>> Stashed changes
 
     private $produit;
     private $categorie;
@@ -31,16 +25,7 @@ class ControleurProduits
         
 
 
-<<<<<<< Updated upstream
-    public function affichageProduits($idProduit){
-
-        $produit = $this->produit->getProduct($idProduit);
-        $vue= new vue("produit");
-        $vue->generer(array('produit' => $produit));
-
-=======
         $vue = new vue("produits");
         $vue->generer(array('products' => $product, 'category'=>$categories));
->>>>>>> Stashed changes
     }
 }
