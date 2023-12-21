@@ -41,4 +41,22 @@ class ControleurCategories
         $vue = new vue("addcategories");
         $vue->generer(array('category' => $categories));
     }
+
+    public function GetCatById($param){
+
+        if($param == "all"){
+
+            $this->categorie->getCategory();
+
+
+        }else{
+
+               $this->categorie->getCategoryById($param);
+  
+        }
+    
+
+   
+    
+    }
 }

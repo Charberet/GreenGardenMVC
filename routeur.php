@@ -33,9 +33,11 @@ class routeur
                     break;
             }
         }else if(isset($_GET['TrierCat'])){
-            switch ($_GET['TrierCat']) {
-            }
+            
+            $this->ctrlCategorie->GetCatById($_GET['TrierCat']);
+            $this->ctrlProduits->affichageProduitsById();
         }else{
+
             $this->ctrlProduits->affichageProduits();
         }
     }

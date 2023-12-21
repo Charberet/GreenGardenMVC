@@ -26,11 +26,16 @@ class ControleurProduits
         $vue = new vue("produits");
         $vue->generer(array('products' => $product, 'category' => $categories));
     }
-    public function affichageProduits()
+    
+    
+    public function affichageProduitsById()
     {
-
-        $product = $this->produit->getProduct();
-        $categories = $this->categorie->getCategory();
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $categories = $this->categorie->getCategory();
+        $product = $this->produit->getProductByCat($_GET['TrierCat']);
+        $vue = new vue("produits");
+        $vue->generer(array('products' => $product, 'category' => $categories));
+    }
     }
 
     public function addProduit()

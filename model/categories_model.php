@@ -1,5 +1,5 @@
 <?php 
-require_once 'model/categories_model.php';
+
 require_once 'model/bdd_model.php';
 
 class Categorie extends connectBDD
@@ -8,6 +8,13 @@ class Categorie extends connectBDD
 function getCategoryParent($var){
 
     $sql = "SELECT * FROM t_d_categorie WHERE Id_Categorie_Parent = '$var'";
+    return $this->executeRequete($sql);
+
+}
+
+function getCategoryById($var){
+
+    $sql = "SELECT * FROM t_d_categorie WHERE Id_Categorie = '$var'";
     return $this->executeRequete($sql);
 
 }
