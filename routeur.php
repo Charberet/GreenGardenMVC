@@ -20,7 +20,9 @@ class routeur
     // Traite une requête entrante
     public function routerRequete()
     {
-switch(isset($_GET['action'])){
+
+         
+switch(($_GET['action'])){
     case "addproduct":
         $this->ctrlProduits->addProduit();
         break;
