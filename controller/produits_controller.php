@@ -48,6 +48,25 @@ class ControleurProduits
     }
     }
 
+
+    public function affichageProduitsById()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $categories = $this->categorie->getCategory();
+
+            if ($_GET['TrierCat'] == "all") {
+
+                $product = $this->produit->getProduct();
+            } else {
+
+                $product = $this->produit->getProductByCat($_GET['TrierCat']);
+            }
+
+            $vue = new vue("produits");
+            $vue->generer(array('products' => $product, 'category' => $categories));
+        }
+    }
+
     public function addProduit()
     {
 
@@ -65,11 +84,10 @@ class ControleurProduits
                 $categorie = $_POST['categorie'];
                 $result = $this->produit->getRef(['ref' => $addRef_fournisseur]);
 
-if($result > 0){
-
-}else{
-    $this->produit->addProduct($addTaux_TVA,$addNom_Long,$addNom_court,$addRef_fournisseur,$addPhoto,$addPrix_Achat,$fournisseur,$categorie);
-}
+                if ($result > 0) {
+                } else {
+                    $this->produit->addProduct($addTaux_TVA, $addNom_Long, $addNom_court, $addRef_fournisseur, $addPhoto, $addPrix_Achat, $fournisseur, $categorie);
+                }
                 // 
 
             }
