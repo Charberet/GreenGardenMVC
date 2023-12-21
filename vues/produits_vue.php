@@ -8,7 +8,7 @@
 
                 <?php foreach ($category as $valuesChild) { ?>
                     <?php if ($valuesChild['Id_Categorie_Parent'] != "" && $valuesChild['Id_Categorie_Parent'] == $valuesParent['Id_Categorie']) { ?>
-                        <option value="<?= $valuesChild['Id_Categorie']?> "> <?php print $valuesChild['Libelle'] ?> </option>
+                        <option value="<?= $valuesChild['Id_Categorie']?>" <?php if (isset($_GET["TrierCat"]) && $_GET["TrierCat"] == $valuesChild["Id_Categorie"]) { ?>selected<?php } ?>> <?php print $valuesChild['Libelle'] ?> </option>
           
             <?php }
                 }
