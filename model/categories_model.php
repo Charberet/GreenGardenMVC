@@ -14,6 +14,7 @@ function getCategoryParent($var){
 
 function getCategoryById($var){
 
+
     $sql = "SELECT * FROM t_d_categorie WHERE Id_Categorie = '$var'";
     return $this->executeRequete($sql);
 

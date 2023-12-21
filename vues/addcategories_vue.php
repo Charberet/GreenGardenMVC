@@ -12,5 +12,5 @@
     </select>
 
     <button class="btn btn-success" type="submit" name="addCategory">Ajouter une catégorie</button>
-    
+
 </form>

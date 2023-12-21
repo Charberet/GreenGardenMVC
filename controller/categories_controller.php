@@ -14,6 +14,7 @@ class ControleurCategories
     public function __construct()
     {
         $this->categorie = new Categorie();
+
     }
 
 
@@ -41,6 +42,7 @@ class ControleurCategories
 
 
 
+
     public function GetCatById($param)
     {
 
@@ -51,5 +53,6 @@ class ControleurCategories
 
             $this->categorie->getCategoryById($param);
         }
+
     }
 }
