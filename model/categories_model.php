@@ -39,15 +39,18 @@ function getCategory(){
 
 }
 
-function addCategory(){
+function getCategoryToAdd($param = []){
 
-    $sql="INSERT INTO t_d_categorie (`Libelle`,`Id_categorie_Parent`) VALUES (?,?)";
-   
-    return $this->executeRequete($sql,array($_POST['addLibelle'],$_POST['AddCatParent']));
+    $sql = "SELECT * FROM t_d_categorie WHERE Id_Categorie = :ref ";
+    return $this->executeRequete($sql,$param);
 
 }
 
+function addCategory($addLibelle,$AddCatParent){
 
+    $sql="INSERT INTO t_d_categorie (`Libelle`,`Id_categorie_Parent`) VALUES (?,?)";
+   
+    return $this->executeRequete($sql,array($addLibelle,$AddCatParent));
 
-
+}
 }
