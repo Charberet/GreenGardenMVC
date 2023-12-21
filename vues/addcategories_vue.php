@@ -1,4 +1,4 @@
-<form class="d-flex justify-content-center" method="POST">
+<form class="d-flex justify-content-center" method="GET">
 
     <input type="text" name="addLibelle" placeholder="Nom de la catégorie" required>
     <select name="AddCatParent">
@@ -12,4 +12,5 @@
     </select>
 
     <button class="btn btn-success" type="submit" name="addCategory">Ajouter une catégorie</button>
+    
 </form>
