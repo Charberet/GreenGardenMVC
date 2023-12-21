@@ -3,19 +3,17 @@ class vue
 {
 
     private $fichier;
-    private $titre;
-
+    
     public function __construct($action)
     {
         // on récupère le nom du fichier à partir de l'action
-        $this->fichier = "vues/vue" . $action . ".php";
+        $this->fichier = "vues/".$action."_vue.php";
     }
 
-    public function generer($quelquechose)
+    public function generer($donnees)
     {
-
-        $contenu = $this->genererFichier($this->fichier, $quelquechose);
-        $vue = $this->genererFichier('vues/template.php', array('titre' => $this->titre, 'contenu' => $contenu));
+        $contenu = $this->genererFichier($this->fichier, $donnees);
+        $vue = $this->genererFichier('vues/template.php', array('contenu' => $contenu));
         echo $vue;
     }
 
