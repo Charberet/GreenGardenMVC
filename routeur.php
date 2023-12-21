@@ -1,34 +1,45 @@
 <?php
 
 require_once 'controller/produits_controller.php';
-require_once 'vues/vues.php';
+require_once 'controller/categories_controller.php';
+require_once 'vues/vue.php';
+
 
 class routeur
 {
 
     private $ctrlProduits;
+    private $ctrlCategorie;
 
     public function __construct()
     {
         $this->ctrlProduits = new ControleurProduits();
+        $this->ctrlCategorie = new ControleurCategories();
     }
 
     // Traite une requête entrante
     public function routerRequete()
     {
-
-        try {
-            if (isset($_POST['TrierCat'])) {
-                if ($_GET['TrierCat'] == "") {
-                    if (isset($_GET['id'])) {
-
-                        $this->ctrlProduits->affichageProduits($_POST['TrierCat']);
-                    }
-                }
+        if (isset($_GET['action'])) {
+            switch ($_GET['action']) {
+                case "addproduct":
+                    $this->ctrlProduits->addProduit();
+                    break;
+                case "addcategories":
+                    $this->ctrlCategorie->addCat();
+                    break;
+                default:
+                    $this->ctrlProduits->affichageProduits();
+                    break;
             }
-        } catch (Exception $e) {
-            $this->erreur($e->getMessage());
+        }else if(isset($_GET['TrierCat'])){
+            switch ($_GET['TrierCat']) {
+
+            }
+        }else{
+            $this->ctrlProduits->affichageProduits();
         }
+        
     }
     // Affiche une erreur
     private function erreur($msgErreur)
