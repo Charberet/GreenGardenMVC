@@ -31,7 +31,7 @@ class ControleurProduits
 
         $product = $this->produit->getProduct();
         $categories = $this->categorie->getCategory();
-        
+    }
 
     public function addProduit()
     {
