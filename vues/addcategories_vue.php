@@ -12,5 +12,4 @@
     </select>
 
     <button class="btn btn-success" type="submit" name="addCategory">Ajouter une catégorie</button>
-    <span style="color:red;"><?php echo $erreur  ?></span>
 </form>

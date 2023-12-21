@@ -20,20 +20,24 @@ class routeur
     // Traite une requête entrante
     public function routerRequete()
     {
-
-         
-switch(($_GET['action'])){
-    case "addproduct":
-        $this->ctrlProduits->addProduit();
-        break;
-    case "addcategories":
-        $this->ctrlCategorie->addCat();
-        break;
-        default:
+        if (isset($_GET['action'])) {
+            switch ($_GET['action']) {
+                case "addproduct":
+                    $this->ctrlProduits->addProduit();
+                    break;
+                case "addcategories":
+                    $this->ctrlCategorie->addCat();
+                    break;
+                default:
+                    $this->ctrlProduits->affichageProduits();
+                    break;
+            }
+        }else if(isset($_GET['TrierCat'])){
+            switch ($_GET['TrierCat']) {
+            }
+        }else{
             $this->ctrlProduits->affichageProduits();
-            break;
-}
-
+        }
     }
     // Affiche une erreur
     private function erreur($msgErreur)

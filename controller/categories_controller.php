@@ -1,3 +1,4 @@
+
 <?php
 require_once 'model/produits_model.php';
 require_once 'model/categories_model.php';
@@ -13,6 +14,7 @@ class ControleurCategories
     public function __construct()
     {
         $this->categorie = new Categorie();
+
     }
 
 

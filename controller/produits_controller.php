@@ -27,6 +27,7 @@ class ControleurProduits
         $vue->generer(array('products' => $product, 'category' => $categories));
     }
 
+
     public function addProduit()
     {
 
