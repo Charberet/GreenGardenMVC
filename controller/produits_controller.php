@@ -18,6 +18,7 @@ class ControleurProduits
         $this->categorie = new Categorie();
         $this->fournisseur = new Fournisseur();
     }
+    
     public function affichageProduits()
     {
 
