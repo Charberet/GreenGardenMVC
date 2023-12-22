@@ -18,7 +18,6 @@ class ControleurProduits
         $this->categorie = new Categorie();
         $this->fournisseur = new Fournisseur();
     }
-    
     public function affichageProduits()
     {
 
@@ -26,26 +25,6 @@ class ControleurProduits
         $categories = $this->categorie->getCategory();
         $vue = new vue("produits");
         $vue->generer(array('products' => $product, 'category' => $categories));
-    }
-    
-    
-    public function affichageProduitsById()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $categories = $this->categorie->getCategory();
-
-        if($_GET['TrierCat'] == "all"){
-
-            $product = $this->produit->getProduct();
-
-        }else{
-
-              $product = $this->produit->getProductByCat($_GET['TrierCat']);
-        }
-
-        $vue = new vue("produits");
-        $vue->generer(array('products' => $product, 'category' => $categories));
-    }
     }
 
 

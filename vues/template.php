@@ -24,10 +24,30 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.php">Accueil</a>
                         </li>
-                        <form method="post" action=".">
- 
-    <input type="submit" name=connexion value="connexion">
+                        <?php if ($_SESSION != null) {
+                            if($_SESSION['userType'] == 2) { ?>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Compte
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="index.php?action=addproduct">Ajouter un produit</a></li>
+                                    <li><a class="dropdown-item" href="index.php?action=addcategories">Ajouter categorie</a></li>
+                                    
+                                    <li><a class="dropdown-item" href="index.php?action=deconnexion">Déconnexion</a></li>
+                                </ul>
+                            </li>
+
+                        <?php } } else { ?>
+                            <form method="get" action="index.php"> 
+                        <input type="hidden" name="action" value="connexion">
+    <input type="submit"   value="Connexion">
 </form>
+
+
+                        <?php } ?>
+                    </ul>
+                        
                         
                     </ul>
                     <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-cart" viewBox="0 0 16 16">

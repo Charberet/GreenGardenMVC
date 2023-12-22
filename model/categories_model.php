@@ -14,16 +14,15 @@ function getCategoryParent($var){
 
 function getCategoryById($var){
 
-
     $sql = "SELECT * FROM t_d_categorie WHERE Id_Categorie = '$var'";
     return $this->executeRequete($sql);
 
 }
 
-function getCategoryPrecis($param = []){
+function getCategoryPrecis($var){
 
-    $sql = "SELECT * FROM t_d_categorie WHERE Libelle = :Nom";
-    return $this->executeRequeteFetch($sql, $param);
+    $sql = "SELECT * FROM t_d_categorie WHERE Libelle = '$var'";
+    return $this->executeRequete($sql);
 
 }
 
@@ -32,6 +31,12 @@ function getCategoryChild($var){
     $sql = "SELECT * FROM t_d_categorie WHERE Libelle = '$var'";
     return $this->executeRequete($sql);
 
+}
+
+function getProductByCat($param)
+{
+    $sql = "SELECT * FROM t_d_produit WHERE Id_Categorie = '$param'";
+    return $this->executeRequete($sql);
 }
 
 function getCategory(){
@@ -50,19 +55,9 @@ function getCategoryToAdd($param = []){
 
 function addCategory($addLibelle,$AddCatParent){
 
-    if($AddCatParent == ""){
-
-        $sql="INSERT INTO t_d_categorie (`Libelle`,`Id_categorie_Parent`) VALUES (?,?)";
-   
-        return $this->executeRequete($sql,array($addLibelle,NULL));
-    }else{
-   $sql="INSERT INTO t_d_categorie (`Libelle`,`Id_categorie_Parent`) VALUES (?,?)";
+    $sql="INSERT INTO t_d_categorie (`Libelle`,`Id_categorie_Parent`) VALUES (?,?)";
    
     return $this->executeRequete($sql,array($addLibelle,$AddCatParent));
 
-    }
 }
-
-
-
 }

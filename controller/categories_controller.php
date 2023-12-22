@@ -22,37 +22,41 @@ class ControleurCategories
     {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['addCategory'])) {
+            if (isset($_POST['addProduct'])) {
 
                 $addLibelle = $_POST['addLibelle'];
-                $SelectCat = $_POST['SelectCat'];
-                $result = $this->categorie->getCategoryPrecis(['Nom' => $addLibelle]);
+                $AddCatParent = $_POST['AddCatParent'];
 
-                if ($result == "") {
-                    $this->categorie->addCategory($addLibelle, $SelectCat);
+                $result = $this->categorie->getCategory(['ref' => $addLibelle]);
+
+                if ($result > 0) {
                 } else {
+                    $this->categorie->addCategory($addLibelle, $AddCatParent);
                 }
+                // 
+
             }
         }
-
         $categories = $this->categorie->getCategory();
         $vue = new vue("addcategories");
         $vue->generer(array('category' => $categories));
     }
 
+    public function GetCatById($param){
 
-
-
-    public function GetCatById($param)
-    {
-
-        if ($param == "all") {
+        if($param == "all"){
 
             $this->categorie->getCategory();
-        } else {
 
-            $this->categorie->getCategoryById($param);
+
+        }else{
+
+               $this->categorie->getCategoryById($param);
+  
         }
+    
 
+   
+    
     }
 }
