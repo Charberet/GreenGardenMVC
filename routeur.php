@@ -2,6 +2,7 @@
 
 require_once 'controller/produits_controller.php';
 require_once 'controller/categories_controller.php';
+require_once 'controller/connexion_controller.php';
 require_once 'vues/vue.php';
 
 
@@ -10,11 +11,12 @@ class routeur
 
     private $ctrlProduits;
     private $ctrlCategorie;
-
+    private $ctrlConnexion;//
     public function __construct()
     {
         $this->ctrlProduits = new ControleurProduits();
         $this->ctrlCategorie = new ControleurCategories();
+        $this->ctrlConnexion = new ControleurConnexion();//
     }
 
     // Traite une requête entrante
@@ -28,6 +30,21 @@ class routeur
                 case "addcategories":
                     $this->ctrlCategorie->addCat();
                     break;
+                    case "connexion":
+                        
+                        $this->ctrlConnexion->getConnexion();
+                        if(isset($_POST['connPseudo']) && isset($_POST['connPassword']) ){
+                            
+                        $result = $this->ctrlConnexion->validerConnexion($_POST['connPseudo'],$_POST['connPassword']);
+                       
+                        
+                        }
+                        break;
+                        case "deconnexion":
+                            session_destroy();
+                            header('Location: index.php');
+                            exit;
+                            break;
                 default:
                     $this->ctrlProduits->affichageProduits();
                     break;
