@@ -1,4 +1,3 @@
-
 <form method="">
     <select onchange="submit()" name="TrierCat" class="form-select form-select-lg mb-3 selectpicker">
         <option value="all">Selectionnez une catégorie...</option>
@@ -8,8 +7,8 @@
 
                 <?php foreach ($category as $valuesChild) { ?>
                     <?php if ($valuesChild['Id_Categorie_Parent'] != "" && $valuesChild['Id_Categorie_Parent'] == $valuesParent['Id_Categorie']) { ?>
-                        <option value="<?= $valuesChild['Id_Categorie']?>" <?php if (isset($_GET["TrierCat"]) && $_GET["TrierCat"] == $valuesChild["Id_Categorie"]) { ?>selected<?php } ?>> <?php print $valuesChild['Libelle'] ?> </option>
-          
+                        <option value="<?= $valuesChild['Id_Categorie'] ?>" <?php if (isset($_GET["TrierCat"]) && $_GET["TrierCat"] == $valuesChild["Id_Categorie"]) { ?>selected<?php } ?>> <?php print $valuesChild['Libelle'] ?> </option>
+
             <?php }
                 }
             } ?>
@@ -25,9 +24,34 @@
                 <p class="card-text d-flex justify-content-center text-white"><?php echo $product['Nom_Long'] ?></p>
                 <p class="card-text d-flex justify-content-center text-white"><?php echo $product['Prix_Achat'] ?> €</p>
 
-                <form class="d-flex flex-column justify-content-center" method="POST">
-                    <button type="submit" name="addToCart" id="addToCart" class="btn btn-dark ">Ajouter au panier</button>
-                </form>
-            </div>
+                
+          
+        
+        <?php if ($_SESSION != null) {
+                                    if ($_SESSION['userType'] == 2) { ?>
+                                        <form class="d-flex flex-column justify-content-center" method="POST">
+                                            <button type="submit" name="addToCart" id="addToCart" class="btn btn-dark mb-2">Ajouter au panier</button>
+                                        </form>
+                                        <form class="d-flex flex-column justify-content-center mb-2" method="POST">
+                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#ModalModification">Modifier le produit</button>
+                                        </form>
+                                        <form class="d-flex flex-column justify-content-center" method="POST" action="./pages/supprProduit.php">
+                                            <button type="submit" name="deleteProduct" value="<?php echo $product['Id_Produit'] ?>" class="btn btn-danger ">Supprimer le produit</button>
+                                        </form>
+                            </div>
+                        </div>
+                    <?php } else { ?>
+                        <form class="d-flex flex-column justify-content-center" method="POST">
+                            <button type="submit" name="addToCart" id="addToCart" class="btn btn-dark ">Ajouter au panier</button>
+                        </form>
         </div>
-    <?php } ?>
+        </div>
+    <?php }
+                                } else { ?>
+
+    <form class="d-flex flex-column justify-content-center" method="POST">
+        <button type="submit" name="addToCart" id="addToCart" class="btn btn-dark ">Ajouter au panier</button>
+    </form>
+    </div>
+    </div>
+<?php } }?>

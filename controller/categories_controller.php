@@ -20,21 +20,15 @@ class ControleurCategories
 
     public function addCat()
     {
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['addProduct'])) {
-
+            if (isset($_POST['addCategory'])) {
                 $addLibelle = $_POST['addLibelle'];
-                $AddCatParent = $_POST['AddCatParent'];
-
-                $result = $this->categorie->getCategory(['ref' => $addLibelle]);
-
-                if ($result > 0) {
+                $SelectCat = $_POST['SelectCat'];
+                $result = $this->categorie->getCategoryPrecis(['Nom' => $addLibelle]);
+                if ($result == "") {
+                    $this->categorie->addCategory($addLibelle, $SelectCat);
                 } else {
-                    $this->categorie->addCategory($addLibelle, $AddCatParent);
                 }
-                // 
-
             }
         }
         $categories = $this->categorie->getCategory();
